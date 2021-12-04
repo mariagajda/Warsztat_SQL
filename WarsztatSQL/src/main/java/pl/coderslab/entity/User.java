@@ -1,10 +1,10 @@
 package pl.coderslab.entity;
 
 public class User {
-    private static int id;
-    private static String userName;
-    private static String email;
-    private static String password;
+    private int id;
+    private String userName;
+    private String email;
+    private String password;
 
 
     public int getId() {
@@ -32,12 +32,21 @@ public class User {
     }
 
     public String getPassword() {
-        UserDao userDao = new UserDao();
-        return userDao.hashPassword(password);
+        return password;
     }
 
     public void setPassword(String password) {
         UserDao userDao = new UserDao();
         this.password = userDao.hashPassword(password);
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", userName='" + userName + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 }
